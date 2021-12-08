@@ -1,0 +1,92 @@
+﻿@model OrnekWebSite.Models.ShippingDetails
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="span9">
+    <ul class="breadcrumb">
+        <li><a href="/Home/Index">Anasayfa</a> <span class="divider">/</span></li>
+        <li class="active">Sipariş Formu</li>
+    </ul>
+    <hr class="soft" />
+    <div class="well">
+        @using (Html.BeginForm("CheckOut", "Cart", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+            <h3>Adres Bilgileri</h3>
+
+
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Kullanıcı Adı</label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        <div class="btn btn-success"> @User.Identity.Name </div>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Adres </label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Adress, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Adress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Şehir </label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Sehir, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Sehir, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">İlçe</label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Semt, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Semt, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname">Mahalle </label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Mahalle, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.Mahalle, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLname"> Posta Kodu : </label>
+                <div class="controls">
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.PostaKodu, new { htmlAttributes = new { @class = "form-control", @style = "max-width:35%" } })
+                        @Html.ValidationMessageFor(model => model.PostaKodu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="control-group">
+                <div class="controls">
+                    <input type="submit" name="submitAccount" value=" Siparişi Tamamla" class="exclusive shopBtn">
+                </div>
+            </div>
+
+        }
+
+    </div>
+
+
+
+
+</div>
+
+  </div>

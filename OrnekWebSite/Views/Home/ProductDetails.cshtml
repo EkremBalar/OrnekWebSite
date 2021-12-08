@@ -1,0 +1,60 @@
+﻿@using OrnekWebSite.Entity
+@model Product
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            @Html.Action("CategoryList", "Category")
+            <li style="border:0"> &nbsp;</li>
+            @Html.Action("Summary", "Cart")
+        </div>
+
+       
+        <br>
+        @Html.Action("FeaturedProductList", "Home")
+
+    </div>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li><a href="/Home/Index/">Anasayfa</a> <span class="divider">/</span></li>
+            <li><a href="/Home/Product">Ürünler</a> <span class="divider">/</span></li>
+            <li class="active">Ürün Detayları</li>
+        </ul>
+        <div class="well well-small">
+            <div class="row-fluid">
+                <div class="span5">
+                    <div id="myCarousel" class="carousel slide cntr">
+                       
+                            <div class="item active">
+                                <a href="#"> <img src="~/Content/image/@Model.Image" alt="" style="width:100%"></a>
+                            </div>
+                           
+                    </div>
+                </div>
+                <div class="span7">
+                    <h3>@Model.Name</h3>
+                    <hr class="soft" />
+                    @using (Html.BeginForm("AddToCart","Cart",new {@class= "form-horizontal qtyFrm" }  ))
+                    { 
+                       @Html.HiddenFor(i=>i.Id)
+                        <div class="control-group">
+                            <label class="control-label"><span>@Model.Price (₺)</span></label>
+                            
+                        </div>
+
+                        
+                        
+                        <p>
+                             @Model.Descriptions
+                        </p>
+                        
+                            <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span> Sepete Ekle</button>
+                        
+                    }
+
+                </div>
+            </div>
+            <hr class="softn clr" />
+
+        </div>
+    </div>
+</div>
